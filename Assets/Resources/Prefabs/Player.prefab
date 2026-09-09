@@ -199,7 +199,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -263,7 +263,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -283,7 +283,7 @@ CharacterController:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
@@ -310,6 +310,7 @@ MonoBehaviour:
   _gravityAcceleration: 9.8
   _gravityRotationSpeed: 5
   _maxFallSpeed: 30
+  _gravityAlignAngle: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   _glideVisualSpeed: 5
   _glideTurnSpeed: 90
   _glideFallSpeed: 2
+  _glideInitialSpeed: 5
   _glideConversionSpeed: 10
   _glideAcceleration: 50
   _glideBankAngle: 30

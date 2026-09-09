@@ -102,9 +102,6 @@ public class PlayerController : MonoBehaviour
             MoveCharacter(_moveInput, GravityDir);
             return;
         }
-        Debug.Log(
-            Vector3.Angle(transform.up, -GravityDir)
-        );
     }
 
     void FixedUpdate()
@@ -193,22 +190,24 @@ public class PlayerController : MonoBehaviour
         float gravitySpeed =
             Vector3.Dot(velocity, gravityDir);
 
+        float horizontalSpeed =
+            Mathf.Max(horizontalVelocity.magnitude, 4f);
+        Vector3 horizontalDirection;
+
         // Convert plane velocity to target dir.
         if (horizontalVelocity.sqrMagnitude > 0.001f)
-        {
-            float horizontalSpeed = Mathf.Max(horizontalVelocity.magnitude, _glideInitialSpeed);
-
-            Vector3 horizontalDirection =
+            horizontalDirection =
                 Vector3.RotateTowards(
                     horizontalVelocity.normalized,
                     targetDirection,
                     _glideTurnSpeed * Mathf.Deg2Rad * Time.fixedDeltaTime,
                     0f
                 );
+        else
+            horizontalDirection = targetDirection;
 
-            horizontalVelocity =
-                horizontalDirection * horizontalSpeed;
-        }
+        horizontalVelocity =
+            horizontalDirection * horizontalSpeed;
 
         // Convert gravity dir velocity to plane velocity.
         float convertibleSpeed =
