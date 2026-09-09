@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour
     private Vector3 _previousUp;
 
     private float _pitch;
-    private bool _initialized;
 
     void Awake()
     {
