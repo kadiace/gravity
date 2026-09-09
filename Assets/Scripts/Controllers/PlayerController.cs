@@ -17,25 +17,13 @@ public class PlayerController : MonoBehaviour
     private Quaternion _bodyDefaultRotation;
     private Vector3 _wingDefaultScale;
 
-    private GravityZone _gravityZone;
 
     private Vector2 _moveInput;
     private Vector3 _characterMoveDirection;
     private float _characterFallSpeed;
     private bool _isGliding;
 
-    public GravityZone GravityZone { get { return _gravityZone; } set { _gravityZone = value; } }
-
-    public Vector3 GravityDir
-    {
-        get
-        {
-            if (_gravityZone == null)
-                return Vector3.down;
-
-            return _gravityZone.GetGravityDir(transform.position);
-        }
-    }
+    public Vector3 GravityDir { get; set; }
 
     [Tooltip("Move")]
     [SerializeField] private float _moveSpeed = 5f;
@@ -85,6 +73,8 @@ public class PlayerController : MonoBehaviour
         _collider = _body.GetComponent<CapsuleCollider>();
 
         _camera = Camera.main.GetComponent<CameraController>();
+
+        GravityDir = Vector3.down;
     }
 
     void Start()
