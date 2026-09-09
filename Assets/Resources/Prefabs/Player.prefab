@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 2659162585646891573}
   - component: {fileID: 953895661813454217}
   - component: {fileID: 8513250091499255937}
-  - component: {fileID: 3528289670493732046}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -206,31 +205,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &3528289670493732046
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497686656471328769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6525232454304499188
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800803924804951419}
   - component: {fileID: 4667001004494896486}
+  - component: {fileID: 5194855255234285679}
   - component: {fileID: 4227342463965020345}
   m_Layer: 0
   m_Name: Player
@@ -292,6 +267,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!143 &5194855255234285679
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6525232454304499188}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4227342463965020345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _moveSpeed: 5
+  _groundStickSpeed: 2
+  _bodyRecoverAngle: 1
   _gravityAcceleration: 9.8
   _gravityRotationSpeed: 5
   _maxFallSpeed: 30
@@ -318,3 +320,5 @@ MonoBehaviour:
   _glideFallSpeed: 2
   _glideConversionSpeed: 10
   _glideAcceleration: 50
+  _glideBankAngle: 30
+  _glideBankSensitivity: 1
