@@ -10,6 +10,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float _minPitch = -80f;
     [SerializeField] private float _maxPitch = 80f;
 
+    [Header("Damping")]
+    [SerializeField] private float _followDamping = 20f;
+
     private InputAction _look;
 
     private Vector3 _forward;
@@ -50,8 +53,16 @@ public class CameraController : MonoBehaviour
         ApplyYaw(lookInput.x, up);
         ApplyPitch(lookInput.y, up);
 
+        Vector3 targetPosition =
+            _player.transform.position
+            - _forward * _distance;
+
         transform.position =
-            _player.transform.position - _forward * _distance;
+            Vector3.Lerp(
+                transform.position,
+                targetPosition,
+                _followDamping * Time.deltaTime
+            );
 
         transform.rotation =
             Quaternion.LookRotation(_forward, up);
